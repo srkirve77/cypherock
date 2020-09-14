@@ -1,6 +1,5 @@
+
 #include "BTC_btc.h"
-#include "iostream"
-using namespace std;
 int main()
 {
 	unsigned_txn obj;
@@ -8,21 +7,8 @@ int main()
 	uint32_t  i = 0;
 	while(hex_string[i]!='\0')
 		i++;
-	uint8_t a = 1;
-	cout<<" a "<<a<<endl;
-	uint8_t *byte_array = new uint8_t[i+1];
+	uint8_t *byte_array = (uint8_t*)malloc(sizeof(uint8_t)*(i/2));
 	hex_string_to_byte_array(hex_string,i,byte_array);
-
-	cout<<byte_array[0]<<endl;
-
-	unsigned_txn *unsigned_txn_ptr = new unsigned_txn();
-
-
+	unsigned_txn *unsigned_txn_ptr = (unsigned_txn*)malloc(sizeof(unsigned_txn));
 	byte_array_to_unsigned_txn(byte_array, unsigned_txn_ptr);
-
- 	cout<<unsigned_txn_ptr->network_version<<endl;
-	// cout<<unsigned_txn_ptr->input_count<<endl;
-	// cout<<unsigned_txn_ptr->input->previous_txn_hash<<endl;
-	// cout<<unsigned_txn_ptr->locktime<<endl;
-	// cout<<unsigned_txn_ptr->sighash<<endl;
 }
